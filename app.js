@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom";
 const headingh1 = React.createElement(
   "h1",
   {
@@ -13,7 +15,9 @@ const headingh2 = React.createElement(
   "I am Heading H2"
 );
 
-const container = React.createElement("div", {}, [headingh1, headingh2]);
-
+const container = React.createElement("div", { id: "container" }, [
+  headingh1,
+  headingh2,
+]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(container);
