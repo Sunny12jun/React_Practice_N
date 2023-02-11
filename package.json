@@ -2,9 +2,10 @@
   "name": "namaste-react",
   "version": "1.0.0",
   "description": "this is an learing react and corse",
-  "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -17,12 +18,14 @@
   },
   "homepage": "https://github.com/Sunny12jun/Namaste-React#readme",
   "dependencies": {
-    "git-init": "^1.0.0",
-    "parcel": "^2.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "process": "^0.11.10"
-  }
+    "process": "^0.11.10",
+    "parcel": "^2.8.3"
+  },
+  "browserslist": [
+    "last 10 Chrome versions"
+  ]
 }
