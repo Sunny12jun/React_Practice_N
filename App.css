@@ -26,8 +26,15 @@
 .card > img {
   width: 100%;
 }
-
+.card > h3
+{    
+  word-break: break-word;
+}
 .restaurant-list {
   display: flex;
   flex-wrap: wrap;
+}
+
+search-container{
+  display: flex;
 }
