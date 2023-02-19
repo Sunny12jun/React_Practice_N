@@ -1,19 +1,38 @@
-import restaurantList from "../Constant.js";
+// import { restaurantList } from "../Constant.js";
+import { swiggi_API } from "../Utility/Constant";
+
 import RestrauntCard from "./RestaurantCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ShimmerCard from "./ShimmerCard";
 
 export const Body = () => {
   const [inptSearch, SetInputSearch] = useState("");
-  const [restaurantState, SetRestaurantState] = useState(restaurantList);
+  const [allRestaurantState, SetAllRestaurantState] = useState();
+  const [FilterRestaurantState, SetFilterRestaurantState] = useState();
 
   onSearchclick = () => {
-    const filtrRestro = restaurantState.filter((e) =>
+    const filtrRestro = allRestaurantState.filter((e) =>
       e.data.name.toLowerCase().includes(inptSearch.toLocaleLowerCase())
     );
+    SetFilterRestaurantState(filtrRestro);
+  };
 
-    debugger;
-    SetRestaurantState(filtrRestro);
-    console.log(filtrRestro);
+  useEffect(() => {
+    console.log("i am useeffect");
+    GetRestruratentDataAPI();
+  }, []);
+
+  const GetRestruratentDataAPI = async () => {
+    try {
+      fetch(swiggi_API)
+        .then((Resp) => {
+          return !Resp.ok ? { Error: "There is some issue " } : Resp.json();
+        })
+        .then((d) => {
+          const AllResturentData = d.data.cards[2]?.data?.data?.cards;
+          SetAllRestaurantState(AllResturentData);
+        });
+    } catch (error) {}
   };
 
   return (
@@ -26,7 +45,6 @@ export const Body = () => {
             id="inptSearch"
             onChange={(e) => SetInputSearch(e.target.value)}
           />
-          {console.log(inptSearch)}
           <button type="submit" onClick={onSearchclick}>
             Search
           </button>
@@ -34,8 +52,23 @@ export const Body = () => {
       </div>
 
       <div className="restaurant-list">
-        {restaurantState
-          ? restaurantState.map((ele) => {
+        {
+          inptSearch.length === 0 ? (
+            allRestaurantState ? (
+              allRestaurantState?.map((ele) => {
+                return (
+                  <RestrauntCard
+                    restroData={ele.data}
+                    key={ele.data.id}
+                    {...ele.data}
+                  />
+                );
+              })
+            ) : (
+              <ShimmerCard />
+            )
+          ) : FilterRestaurantState ? (
+            FilterRestaurantState?.map((ele) => {
               return (
                 <RestrauntCard
                   restroData={ele.data}
@@ -44,7 +77,11 @@ export const Body = () => {
                 />
               );
             })
-          : ""}
+          ) : (
+            <ShimmerCard />
+          )
+          // <ShimmerCard />
+        }
       </div>
     </div>
   );

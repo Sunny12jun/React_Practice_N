@@ -19,11 +19,12 @@
   "homepage": "https://github.com/Sunny12jun/Namaste-React#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.1.1"
   },
   "devDependencies": {
-    "process": "^0.11.10",
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
   },
   "browserslist": [
     "last 10 Chrome versions"
