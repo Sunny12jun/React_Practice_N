@@ -13,6 +13,9 @@ export const Header = () => {
     <div>
       <div className="header">
         <Title />
+        <div>
+          <h1> foodilicious </h1>
+        </div>
         <div className="nav-items">
           <ul>
             <li>Home</li>
