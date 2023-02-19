@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export const RestrauntCard = (props) => {
   const { id, name, cuisines, totalRatingsString, cloudinaryImageId } = props;
   return (
@@ -9,7 +10,9 @@ export const RestrauntCard = (props) => {
         }
         alt=""
       />
-      <h2>{name}</h2>
+      <Link to={"ResturantMenu/" + id}>
+        <h2>{name}</h2>
+      </Link>
       <h3>{cuisines.join(",")}</h3>
       <h4>{totalRatingsString}</h4>
     </div>
