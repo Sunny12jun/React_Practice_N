@@ -1,4 +1,4 @@
-import Food1 from "../Images/Food1.jpg";
+import Food1 from "../Images/food1.jpg";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ResturantMenu_API, IMG_CDN_URL } from "../Utility/Constant";
