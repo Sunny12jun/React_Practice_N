@@ -10,7 +10,7 @@ export const Body = () => {
   const [allRestaurantState, SetAllRestaurantState] = useState();
   const [FilterRestaurantState, SetFilterRestaurantState] = useState();
 
-  onSearchclick = () => {
+  const onSearchclick = () => {
     const filtrRestro = allRestaurantState.filter((e) =>
       e.data.name.toLowerCase().includes(inptSearch.toLocaleLowerCase())
     );
